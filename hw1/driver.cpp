@@ -9,7 +9,10 @@ int main(){
 	cout << "hello world" << endl;
 	return 0;
 }
-/*IDEAS*/
+
+
+
+/**********IDEAS*********/
 
 /*
 Create a data structure called state

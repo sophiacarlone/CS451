@@ -3,8 +3,8 @@
 
 //generic structure header
 
-#ifndef GENERIC_STRUCTURES_H
-#define GENERIC_STRUCTURES_H
+#ifndef GENERIC_STRUCTURES_HPP
+#define GENERIC_STRUCTURES_HPP
 
 std::struct{
     bool initial; //is it the initial state?

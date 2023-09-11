@@ -3,8 +3,8 @@
 
 //Geography section
 
-#ifndef GEOGRAPHY_H
-#define GEOGRAPHY_H
+#ifndef GEOGRAPHY_HPP
+#define GEOGRAPHY_HPP
 
 /*
 successorfn(state, action) -> state
