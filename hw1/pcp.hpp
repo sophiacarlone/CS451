@@ -30,7 +30,8 @@ Inputs:
 Outputs: bool that reflects if goal state has been reached
 */
 bool goalTest(const state& s){
-    //if string on top = string on bottom return true
+    if(s.top == s.bottom) return true;
+    return false;
 }
 
 #endif
