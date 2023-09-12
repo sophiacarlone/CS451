@@ -3,15 +3,55 @@
 
 #include<iostream>
 #include<list>
+#include<stack>
+#include<queue>
 #include"pcp.hpp"
 
 using namespace std;
 
-#define BFS 1
-#define DFS 2
+const node& fringeManipulationBFS(const node& initial, int setting){ //TODO: find a better name
+	list<node> visitedFringe;
+	list<string> actions = {"MOM,M", "O,OMOMO"}; //TODO: pass in the list?
+	queue<node> unvisitedFringe;
+
+	unvisitedFringe.push(initial);
+	while(true){
+		if(unvisitedFringe.size() == 0){
+			cout << "failure" << endl;
+			exit(1);
+		}
+		node currentNode = fringe.pop();
+		if (goalTest(currentNode.state)) return currentNode; //TODO: this will have to be its own function now
+		else{
+			for(int i = 0; i < actions.size(); i++)
+				fringe.push(successor(currentNode.state, actions[i]));
+		}
+	}
+}
+
+const node& fringeManipulationDFS(const node& initial, int setting){ //TODO: find a better name
+	list<node> visitedFringe;
+	list<string> actions = {"MOM,M", "O,OMOMO"}; //TODO: pass in the list?
+	stack<node> unvisitedFringe;
+
+	unvisitedFringe.push(initial);
+	while(true){
+		if(unvisitedFringe.size() == 0){
+			cout << "failure" << endl;
+			exit(1);
+		}
+		node currentNode = fringe.pop();
+		if (goalTest(currentNode.state)) return currentNode; //TODO: this will have to be its own function now
+		else{
+			for(int i = 0; i < actions.size(); i++)
+				fringe.push(successor(currentNode.state, actions[i]));
+		}
+	}
+}
 
 const node& fringeManipulation(const node& initial, int setting){ //TODO: find a better name
 	list<node> fringe;
+	int currentNodeIndex = 0;
 
 	fringe.push_back(initial);
 	while(true){
@@ -20,11 +60,15 @@ const node& fringeManipulation(const node& initial, int setting){ //TODO: find a
 			exit(1);
 		}
 		node currentNode = fringe.back();
+		currentNodeIndex = fringe.size()-1; //should be index at the end of the list
 		if (goalTest(currentNode.state)) return currentNode; //TODO: this will have to be its own function now
 		else{
-			if(setting == BFS) //TODO: need setting variable to determine BFS vs DFS
-				//BFS n, put successors into the fringe
-			else if(setting == DFS)
+			if(setting == BFS){ //BFS n, put successors into the fringe
+				fringe.push_back(successor());
+			} 
+			else if(setting == DFS){
+				fringe.push_back(successor());
+			}
 			else{
 				cout << "error in search setting" << endl;
 				exit(2);
