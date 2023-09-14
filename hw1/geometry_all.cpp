@@ -30,16 +30,14 @@ Outputs: new state
 */
 const node successor(const state& s, const std::string& action){
     state successorState;
-    int comma = action.find(","); //TODO: error checking
-    string sequence = action.substr(0, comma); 
-    string bottom = action.substr(comma+1);
-    // cout << "top: " << top << " , bottom: " << bottom <<endl;
-    successorState.sequence = s.sequence + top; //Question: dont remember if this works
-    successorState.bottom = s.bottom + bottom; //Question: dont remember if this works
-
-    // cout << "top: " << successorState.top << " , bottom: " << successorState.bottom << endl;
+    
+    if(s.sequence.back() == action.front())
+        successorState.sequence = s.sequence + action; //Question: dont remember if this works
+    else
+        successorState.sequence = "fail";
 
     successorState.initial = false;
+    
     node successorNode;
     successorNode.state_ = successorState;
     successorNode.action = action;
@@ -53,7 +51,7 @@ Inputs:
 Outputs: bool that reflects if goal state has been reached
 */
 bool goalTest(const state& s){
-    if(s.top == s.bottom) return true;
+    if(s.top == s.bottom) return true; //needs to be based on if all actions have been used
     return false;
 }
 
@@ -61,6 +59,7 @@ node fringeManipulationBFS(const node& initial){ //TODO: find a better name
 	list<node> visitedFringe; //NOT USED
 	vector<string> actions = {"ABC", "CDE", "CFG", "EHE", "EIJ", "GHK", "GLC"}; //TODO: pass in the list?
 	queue<node> unvisitedFringe;
+    node temp; //for testing in for loop later
 
 	unvisitedFringe.push(initial);
 	while(true){
@@ -72,7 +71,10 @@ node fringeManipulationBFS(const node& initial){ //TODO: find a better name
 		if (goalTest(currentNode.state_)) return currentNode; //TODO: this will have to be its own function now
 		else{
 			for(int i = 0; i < actions.size(); i++){
-				unvisitedFringe.push(successor(currentNode.state_, actions[i]));
+                temp = successor(currentNode.state_, actions[i]);
+                if (temp.state.sequence != "fail")
+				    unvisitedFringe.push(temp);
+                    //increase the amount of correct shit
             }
 		}
         unvisitedFringe.pop();
