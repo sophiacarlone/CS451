@@ -1,0 +1,85 @@
+Sophia Carlone
+
+Geography problem:
+
+1. State :
+The state is the current sequence of actions that fit in the requirements of the game.
+IE. ABC, ABCCFG, ABCCDE, ...
+
+2. Initial State : 
+The initial state is asked by the program to the user.
+It is a sequence at the of the game, in which the solution will change depending on it.
+IE. ABC, CFG, EIJ
+
+3. Goal Test : 
+A function that checks if the sequence has gone through all the actions.
+
+4. Successor Function :
+A function that tests if the addition of string str (an action) will fill the requirements and will add it if so.
+The requirements are that the first letter of the str has to be the same as the last letter of the sequence 
+and that it has not been applied in the sequence before.
+
+Output 1:
+actions are:
+ABC;CDE;CFG;EHE;EIJ;GLC;
+Please enter the initial sequence
+ABC
+
+BFS:
+ABCCDE
+ABCCFG
+ABCCDEEHE
+ABCCDEEIJ
+ABCCFGGLC
+ABCCDEEHEEIJ
+ABCCFGGLCCDE
+ABCCFGGLCCDEEHE
+ABCCFGGLCCDEEIJ
+ABCCFGGLCCDEEHEEIJ
+found a solution: 
+Solution ABCCFGGLCCDEEHEEIJ
+
+DFS:
+ABCCDE
+ABCCFG
+ABCCFGGLC
+ABCCFGGLCCDE
+ABCCFGGLCCDEEHE
+ABCCFGGLCCDEEIJ
+ABCCFGGLCCDEEHEEIJ
+found a solution: 
+solution: ABCCFGGLCCDEEHEEIJ
+
+Output 2:
+actions are:
+ABC;CDE;CFG;EHE;EIJ;GHK;GLC;
+Please enter the initial sequence
+ABC
+
+BFS:
+ABCCDE
+ABCCFG
+ABCCDEEHE
+ABCCDEEIJ
+ABCCFGGHK
+ABCCFGGLC
+ABCCDEEHEEIJ
+ABCCFGGLCCDE
+ABCCFGGLCCDEEHE
+ABCCFGGLCCDEEIJ
+ABCCFGGLCCDEEHEEIJ
+failure using BFS
+
+DFS:
+ABCCDE
+ABCCFG
+ABCCFGGHK
+ABCCFGGLC
+ABCCFGGLCCDE
+ABCCFGGLCCDEEHE
+ABCCFGGLCCDEEIJ
+ABCCFGGLCCDEEHEEIJ
+ABCCDEEHE
+ABCCDEEIJ
+ABCCDEEHEEIJ
+failure using DFS

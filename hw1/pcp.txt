@@ -1,0 +1,44 @@
+Sophia Carlone
+
+PCP problem
+
+1. State:
+The state is the current sequence of actions separated to the top of the domino and the bottom.
+
+2. Initial State:
+The initial state is the starting domino placed.
+
+3. Goal Test:
+The goal test takes a state and determines if the top of the dominio sequence is the same as the bottom of the domino sequence.
+
+4. Successor Function:
+The successor function separates the domino to its top and bottom components, and adds
+the new dominio to the sequence of dominos already made.
+
+Output 1:
+actions are:
+MOM,M;O,OMOMO;
+Please enter the initial top of the domino
+MOM
+Please enter the initial bottom of the domino
+M
+
+BFS:
+top: MOMMOM , bottom: MM
+top: MOMO , bottom: MOMOMO
+top: MOMMOMMOM , bottom: MMM
+top: MOMMOMO , bottom: MMOMOMO
+top: MOMOMOM , bottom: MOMOMOM
+top: MOMOO , bottom: MOMOMOOMOMO
+top: MOMMOMMOMMOM , bottom: MMMM
+top: MOMMOMMOMO , bottom: MMMOMOMO
+top: MOMMOMOMOM , bottom: MMOMOMOM
+top: MOMMOMOO , bottom: MMOMOMOOMOMO
+found a solution: 
+top: MOMOMOM bottom: MOMOMOM
+
+DFS:
+Goes on forever
+
+Output2: 
+Goes into an infinite loop both times on an action of AA,A only.
