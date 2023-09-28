@@ -1,3 +1,9 @@
+/* IMPORTANT:
+for github purposes, I should say that most of the code is not mine, but was given by the teacher.
+All I did was modify heuristic 2 to be the one I thought
+*/
+
+
 #include <iostream>
 #include <queue>
 //#include <string>
@@ -54,14 +60,34 @@ class State
         void print() {cout << counter << " "; print_piles(piles);}
 
         // Heuristic
-        int h() {if (heuristic == 2) return above_big(); else if (heuristic == 1) return counter; else return 0;}
+        int h() {if (heuristic == 2) return above_big(); else if (heuristic == 1) return counter; else return 0;} 
+        //Heuristic one here is the counter
+        //Heurisitc two has to be dominating. Changing his "above_big" to my heuristic for practice
 
         bool operator==(State s);
 };
 
 int State::above_big()
 {
-    int total = 0;
+    int total = 0; //this is so that if the wanted number is on top of the pile, it will read a distance of zero
+    bool found = false;
+
+    for(int i = 0; i < piles.size(); i++){ //piles is a vector
+        if(piles[i].size() > 0){
+            for(auto it = piles[i].rbegin(); it != piles[i].rend(); it++){
+                total++; 
+                if(*it == counter){
+                    found = true;
+                    break;
+                }
+                cout << total <<endl;
+            }
+        }
+        if(found) break;
+        total = 0;
+    }
+
+    /* Teacher's heuristic 2
     for (int i=0; i<piles.size(); i++)
     {
         if (piles[i].size() > 0)
@@ -75,6 +101,7 @@ int State::above_big()
             total += piles[i].size() - max_index - 1;
         }
     }
+    */
     return total + counter;
 }
 

@@ -1,0 +1,11 @@
+State: The current map of the board with the car that should go into the goal and the other cars in the way.
+
+Initial State: The map of the board and the goal that the user makes. 
+
+Goal Test: When one part of the goal car gets into the goal.
+
+Successor: The successor of a state is a new possible map of all the cars based on the spacing of the state inputed.
+
+Heuristic 1: The movement of the goal car straight to the goal (or more generally, from a car position to a spot).
+
+Heuristic 2: Heuristic 1 + the number of cars (block) in the goal car's way.

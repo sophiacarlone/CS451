@@ -1,0 +1,11 @@
+State: The state is the current configuration of each pile on the board and what is currently being used as the counter.
+
+Initial State: The initial state is the piles that the user makes and the counter to start at.
+
+Goal Test: The goal is reached when the counter == 0, meaning that the counter has been able to match with a pile's top and steadily decrement through all numbers.
+
+Successor: The successor is one possibility for the next step in the game. You could either move a card from the top of one pile to another, or you can discard a top card if it is equal to the counter.
+
+Heuristic 1: Return the counter. This is because if you have counter X, you would need to find X, then X-1, and so on a total of X times to get to 0.
+
+Heuristic 2: This returns the counter X plus the distance between the current goal card X to the top of its pile.

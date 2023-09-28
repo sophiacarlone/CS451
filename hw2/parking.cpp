@@ -1,3 +1,8 @@
+/* IMPORTANT:
+for github purposes, I should say that this code is not mine
+I did talk to the professor about the heurstics I made that just happened to be the same as his.
+*/
+
 #include <iostream>
 #include <queue>
 //#include <string>
