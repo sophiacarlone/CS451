@@ -80,7 +80,6 @@ int State::above_big()
                     found = true;
                     break;
                 }
-                cout << total <<endl;
             }
         }
         if(found) break;

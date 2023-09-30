@@ -9,3 +9,128 @@ Successor: The successor is one possibility for the next step in the game. You c
 Heuristic 1: Return the counter. This is because if you have counter X, you would need to find X, then X-1, and so on a total of X times to get to 0.
 
 Heuristic 2: This returns the counter X plus the distance between the current goal card X to the top of its pile.
+
+Problem 1 with heuristic 1:
+How many numbers? 10
+Give me your piles, end a pile with 0, -1 to stop: 
+0
+0
+4 5 1 2 6 7 10 9 3 8 0
+-1
+What kind of search do you want to do? astar
+Tree or graph? graph
+Which heuristic will you use? 1
+Found solution:  
+Initial state: 
+10  [] [] [4,5,1,2,6,7,10,9,3,8]  Perform action [Move 8 from pile 2 to empty pile 0] to get state below with path cost 1 and heuristic 10
+10  [8] [] [4,5,1,2,6,7,10,9,3]  Perform action [Move 3 from pile 2 to empty pile 1] to get state below with path cost 2 and heuristic 10
+10  [8] [3] [4,5,1,2,6,7,10,9]  Perform action [Move 9 from pile 2 to pile 1] to get state below with path cost 3 and heuristic 10
+10  [8] [3,9] [4,5,1,2,6,7,10]  Perform action [Discard 10 from pile 2] to get state below with path cost 4 and heuristic 9
+9  [8] [3,9] [4,5,1,2,6,7]  Perform action [Discard 9 from pile 1] to get state below with path cost 5 and heuristic 8
+8  [8] [3] [4,5,1,2,6,7]  Perform action [Discard 8 from pile 0] to get state below with path cost 6 and heuristic 7
+7  [] [3] [4,5,1,2,6,7]  Perform action [Discard 7 from pile 2] to get state below with path cost 7 and heuristic 6
+6  [] [3] [4,5,1,2,6]  Perform action [Discard 6 from pile 2] to get state below with path cost 8 and heuristic 5
+5  [] [3] [4,5,1,2]  Perform action [Move 2 from pile 2 to empty pile 0] to get state below with path cost 9 and heuristic 5
+5  [2] [3] [4,5,1]  Perform action [Move 3 from pile 1 to pile 0] to get state below with path cost 10 and heuristic 5
+5  [2,3] [] [4,5,1]  Perform action [Move 1 from pile 2 to empty pile 1] to get state below with path cost 11 and heuristic 5
+5  [2,3] [1] [4,5]  Perform action [Discard 5 from pile 2] to get state below with path cost 12 and heuristic 4
+4  [2,3] [1] [4]  Perform action [Discard 4 from pile 2] to get state below with path cost 13 and heuristic 3
+3  [2,3] [1] []  Perform action [Discard 3 from pile 0] to get state below with path cost 14 and heuristic 2
+2  [2] [1] []  Perform action [Discard 2 from pile 0] to get state below with path cost 15 and heuristic 1
+1  [] [1] []  Perform action [Discard 1 from pile 1] to get state below with path cost 16 and heuristic 0
+0  [] [] []Expanded 6248 states
+
+Problem 1 with heuristic 2: (I made my own)
+Give me your piles, end a pile with 0, -1 to stop: 
+0
+0
+4 5 1 2 6 7 10 9 3 8 0
+-1
+What kind of search do you want to do? astar
+Tree or graph? graph
+Which heuristic will you use? 2
+Found solution:  
+Initial state: 
+10  [] [] [4,5,1,2,6,7,10,9,3,8]  Perform action [Move 8 from pile 2 to empty pile 0] to get state below with path cost 1 and heuristic 13
+10  [8] [] [4,5,1,2,6,7,10,9,3]  Perform action [Move 3 from pile 2 to empty pile 1] to get state below with path cost 2 and heuristic 12
+10  [8] [3] [4,5,1,2,6,7,10,9]  Perform action [Move 9 from pile 2 to pile 1] to get state below with path cost 3 and heuristic 11
+10  [8] [3,9] [4,5,1,2,6,7,10]  Perform action [Discard 10 from pile 2] to get state below with path cost 4 and heuristic 10
+9  [8] [3,9] [4,5,1,2,6,7]  Perform action [Discard 9 from pile 1] to get state below with path cost 5 and heuristic 9
+8  [8] [3] [4,5,1,2,6,7]  Perform action [Discard 8 from pile 0] to get state below with path cost 6 and heuristic 8
+7  [] [3] [4,5,1,2,6,7]  Perform action [Discard 7 from pile 2] to get state below with path cost 7 and heuristic 7
+6  [] [3] [4,5,1,2,6]  Perform action [Discard 6 from pile 2] to get state below with path cost 8 and heuristic 8
+5  [] [3] [4,5,1,2]  Perform action [Move 2 from pile 2 to empty pile 0] to get state below with path cost 9 and heuristic 7
+5  [2] [3] [4,5,1]  Perform action [Move 3 from pile 1 to pile 0] to get state below with path cost 10 and heuristic 7
+5  [2,3] [] [4,5,1]  Perform action [Move 1 from pile 2 to empty pile 1] to get state below with path cost 11 and heuristic 6
+5  [2,3] [1] [4,5]  Perform action [Discard 5 from pile 2] to get state below with path cost 12 and heuristic 5
+4  [2,3] [1] [4]  Perform action [Discard 4 from pile 2] to get state below with path cost 13 and heuristic 4
+3  [2,3] [1] []  Perform action [Discard 3 from pile 0] to get state below with path cost 14 and heuristic 3
+2  [2] [1] []  Perform action [Discard 2 from pile 0] to get state below with path cost 15 and heuristic 2
+1  [] [1] []  Perform action [Discard 1 from pile 1] to get state below with path cost 16 and heuristic 0
+0  [] [] []Expanded 5639 states
+
+Problem 2 with heuristic 1:
+How many numbers? 12
+Give me your piles, end a pile with 0, -1 to stop: 
+2 11 4 0
+3 12 6 1 0
+7 8 9 0
+10 5 0
+-1
+What kind of search do you want to do? astar
+Tree or graph? graph
+Which heuristic will you use? 1
+Found solution:  
+Initial state: 
+12  [2,11,4] [3,12,6,1] [7,8,9] [10,5]  Perform action [Move 5 from pile 3 to pile 0] to get state below with path cost 1 and heuristic 12
+12  [2,11,4,5] [3,12,6,1] [7,8,9] [10]  Perform action [Move 10 from pile 3 to pile 2] to get state below with path cost 2 and heuristic 12
+12  [2,11,4,5] [3,12,6,1] [7,8,9,10] []  Perform action [Move 1 from pile 1 to empty pile 3] to get state below with path cost 3 and heuristic 12
+12  [2,11,4,5] [3,12,6] [7,8,9,10] [1]  Perform action [Move 5 from pile 0 to pile 3] to get state below with path cost 4 and heuristic 12
+12  [2,11,4] [3,12,6] [7,8,9,10] [1,5]  Perform action [Move 6 from pile 1 to pile 3] to get state below with path cost 5 and heuristic 12
+12  [2,11,4] [3,12] [7,8,9,10] [1,5,6]  Perform action [Discard 12 from pile 1] to get state below with path cost 6 and heuristic 11
+11  [2,11,4] [3] [7,8,9,10] [1,5,6]  Perform action [Move 4 from pile 0 to pile 1] to get state below with path cost 7 and heuristic 11
+11  [2,11] [3,4] [7,8,9,10] [1,5,6]  Perform action [Discard 11 from pile 0] to get state below with path cost 8 and heuristic 10
+10  [2] [3,4] [7,8,9,10] [1,5,6]  Perform action [Discard 10 from pile 2] to get state below with path cost 9 and heuristic 9
+9  [2] [3,4] [7,8,9] [1,5,6]  Perform action [Discard 9 from pile 2] to get state below with path cost 10 and heuristic 8
+8  [2] [3,4] [7,8] [1,5,6]  Perform action [Discard 8 from pile 2] to get state below with path cost 11 and heuristic 7
+7  [2] [3,4] [7] [1,5,6]  Perform action [Discard 7 from pile 2] to get state below with path cost 12 and heuristic 6
+6  [2] [3,4] [] [1,5,6]  Perform action [Discard 6 from pile 3] to get state below with path cost 13 and heuristic 5
+5  [2] [3,4] [] [1,5]  Perform action [Discard 5 from pile 3] to get state below with path cost 14 and heuristic 4
+4  [2] [3,4] [] [1]  Perform action [Discard 4 from pile 1] to get state below with path cost 15 and heuristic 3
+3  [2] [3] [] [1]  Perform action [Discard 3 from pile 1] to get state below with path cost 16 and heuristic 2
+2  [2] [] [] [1]  Perform action [Discard 2 from pile 0] to get state below with path cost 17 and heuristic 1
+1  [] [] [] [1]  Perform action [Discard 1 from pile 3] to get state below with path cost 18 and heuristic 0
+0  [] [] [] []Expanded 23223 states 
+
+Problem 2 with heuristic 2:
+How many numbers? 12
+Give me your piles, end a pile with 0, -1 to stop: 
+2 11 4 0
+3 12 6 1 0
+7 8 9 0
+10 5 0
+-1
+What kind of search do you want to do? astar 
+Tree or graph? graph
+Which heuristic will you use? 2
+Found solution:  
+Initial state: 
+12  [2,11,4] [3,12,6,1] [7,8,9] [10,5]  Perform action [Move 5 from pile 3 to pile 0] to get state below with path cost 1 and heuristic 15
+12  [2,11,4,5] [3,12,6,1] [7,8,9] [10]  Perform action [Move 10 from pile 3 to pile 2] to get state below with path cost 2 and heuristic 15
+12  [2,11,4,5] [3,12,6,1] [7,8,9,10] []  Perform action [Move 1 from pile 1 to empty pile 3] to get state below with path cost 3 and heuristic 14
+12  [2,11,4,5] [3,12,6] [7,8,9,10] [1]  Perform action [Move 5 from pile 0 to pile 3] to get state below with path cost 4 and heuristic 14
+12  [2,11,4] [3,12,6] [7,8,9,10] [1,5]  Perform action [Move 6 from pile 1 to pile 3] to get state below with path cost 5 and heuristic 13
+12  [2,11,4] [3,12] [7,8,9,10] [1,5,6]  Perform action [Discard 12 from pile 1] to get state below with path cost 6 and heuristic 13
+11  [2,11,4] [3] [7,8,9,10] [1,5,6]  Perform action [Move 4 from pile 0 to pile 1] to get state below with path cost 7 and heuristic 12
+11  [2,11] [3,4] [7,8,9,10] [1,5,6]  Perform action [Discard 11 from pile 0] to get state below with path cost 8 and heuristic 11
+10  [2] [3,4] [7,8,9,10] [1,5,6]  Perform action [Discard 10 from pile 2] to get state below with path cost 9 and heuristic 10
+9  [2] [3,4] [7,8,9] [1,5,6]  Perform action [Discard 9 from pile 2] to get state below with path cost 10 and heuristic 9
+8  [2] [3,4] [7,8] [1,5,6]  Perform action [Discard 8 from pile 2] to get state below with path cost 11 and heuristic 8
+7  [2] [3,4] [7] [1,5,6]  Perform action [Discard 7 from pile 2] to get state below with path cost 12 and heuristic 7
+6  [2] [3,4] [] [1,5,6]  Perform action [Discard 6 from pile 3] to get state below with path cost 13 and heuristic 6
+5  [2] [3,4] [] [1,5]  Perform action [Discard 5 from pile 3] to get state below with path cost 14 and heuristic 5
+4  [2] [3,4] [] [1]  Perform action [Discard 4 from pile 1] to get state below with path cost 15 and heuristic 4
+3  [2] [3] [] [1]  Perform action [Discard 3 from pile 1] to get state below with path cost 16 and heuristic 3
+2  [2] [] [] [1]  Perform action [Discard 2 from pile 0] to get state below with path cost 17 and heuristic 2
+1  [] [] [] [1]  Perform action [Discard 1 from pile 3] to get state below with path cost 18 and heuristic 0
+0  [] [] [] []Expanded 750 states

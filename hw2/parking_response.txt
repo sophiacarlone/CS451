@@ -9,3 +9,91 @@ Successor: The successor of a state is a new possible map of all the cars based 
 Heuristic 1: The movement of the goal car straight to the goal (or more generally, from a car position to a spot).
 
 Heuristic 2: Heuristic 1 + the number of cars (block) in the goal car's way.
+
+Problem 1 with heuristic 1:
+What is the size of your grid? 5
+Give me cars, yours first, end car with 0 0, end all cars with -1 -1 
+1 2 2 2 0 0
+4 5 5 5 0 0
+4 1 4 2 4 3 0 0
+2 4 2 5 0 0
+-1 -1
+What is your goal? 5 2
+What kind of search do you want to do? astar
+Tree or graph? graph
+Which heuristic will you use? 1
+Found solution:  
+Initial state: 
+[(1,2) (2,2)]* [(4,5) (5,5)] [(4,1) (4,2) (4,3)] [(2,4) (2,5)]  Perform action [Move car 1 backward ] to get state below with path cost 1 and heuristic 3
+[(1,2) (2,2)]* [(3,5) (4,5)] [(4,1) (4,2) (4,3)] [(2,4) (2,5)]  Perform action [Move car 3 backward ] to get state below with path cost 2 and heuristic 3
+[(1,2) (2,2)]* [(3,5) (4,5)] [(4,1) (4,2) (4,3)] [(2,3) (2,4)]  Perform action [Move car 0 forward ] to get state below with path cost 3 and heuristic 2
+[(2,2) (3,2)]* [(3,5) (4,5)] [(4,1) (4,2) (4,3)] [(2,3) (2,4)]  Perform action [Move car 1 backward ] to get state below with path cost 4 and heuristic 2
+[(2,2) (3,2)]* [(2,5) (3,5)] [(4,1) (4,2) (4,3)] [(2,3) (2,4)]  Perform action [Move car 2 forward ] to get state below with path cost 5 and heuristic 2
+[(2,2) (3,2)]* [(2,5) (3,5)] [(4,2) (4,3) (4,4)] [(2,3) (2,4)]  Perform action [Move car 2 forward ] to get state below with path cost 6 and heuristic 2
+[(2,2) (3,2)]* [(2,5) (3,5)] [(4,3) (4,4) (4,5)] [(2,3) (2,4)]  Perform action [Move car 0 forward ] to get state below with path cost 7 and heuristic 1
+[(3,2) (4,2)]* [(2,5) (3,5)] [(4,3) (4,4) (4,5)] [(2,3) (2,4)]  Perform action [Move car 0 forward ] to get state below with path cost 8 and heuristic 0
+[(4,2) (5,2)]* [(2,5) (3,5)] [(4,3) (4,4) (4,5)] [(2,3) (2,4)]Expanded 487 states 
+
+Problem 1 with heuristic 2:
+What is the size of your grid? 5
+Give me cars, yours first, end car with 0 0, end all cars with -1 -1 
+1 2 2 2 0 0
+4 5 5 5 0 0
+4 1 4 2 4 3 0 0
+2 4 2 5 0 0
+-1 -1
+What is your goal? 5 2
+What kind of search do you want to do? astar
+Tree or graph? graph
+Which heuristic will you use? 2
+Found solution:  
+Initial state: 
+[(1,2) (2,2)]* [(4,5) (5,5)] [(4,1) (4,2) (4,3)] [(2,4) (2,5)]  Perform action [Move car 0 forward ] to get state below with path cost 1 and heuristic 3
+[(2,2) (3,2)]* [(4,5) (5,5)] [(4,1) (4,2) (4,3)] [(2,4) (2,5)]  Perform action [Move car 1 backward ] to get state below with path cost 2 and heuristic 3
+[(2,2) (3,2)]* [(3,5) (4,5)] [(4,1) (4,2) (4,3)] [(2,4) (2,5)]  Perform action [Move car 3 backward ] to get state below with path cost 3 and heuristic 3
+[(2,2) (3,2)]* [(3,5) (4,5)] [(4,1) (4,2) (4,3)] [(2,3) (2,4)]  Perform action [Move car 1 backward ] to get state below with path cost 4 and heuristic 3
+[(2,2) (3,2)]* [(2,5) (3,5)] [(4,1) (4,2) (4,3)] [(2,3) (2,4)]  Perform action [Move car 2 forward ] to get state below with path cost 5 and heuristic 3
+[(2,2) (3,2)]* [(2,5) (3,5)] [(4,2) (4,3) (4,4)] [(2,3) (2,4)]  Perform action [Move car 2 forward ] to get state below with path cost 6 and heuristic 2
+[(2,2) (3,2)]* [(2,5) (3,5)] [(4,3) (4,4) (4,5)] [(2,3) (2,4)]  Perform action [Move car 0 forward ] to get state below with path cost 7 and heuristic 1
+[(3,2) (4,2)]* [(2,5) (3,5)] [(4,3) (4,4) (4,5)] [(2,3) (2,4)]  Perform action [Move car 0 forward ] to get state below with path cost 8 and heuristic 0
+[(4,2) (5,2)]* [(2,5) (3,5)] [(4,3) (4,4) (4,5)] [(2,3) (2,4)]Expanded 216 states 
+
+Problem 2 with heuristic 1:
+What is the size of your grid? 5
+Give me cars, yours first, end car with 0 0, end all cars with -1 -1 
+3 2 3 3 0 0
+1 1 1 2 0 0
+1 4 1 5 0 0
+2 1 3 1 0 0
+1 3 2 3 0 0
+4 5 5 5 0 0
+-1 -1
+What is your goal? 3 5
+What kind of search do you want to do? astar
+Tree or graph? graph
+Which heuristic will you use? 1
+Found solution:  
+Initial state: 
+[(3,2) (3,3)]* [(1,1) (1,2)] [(1,4) (1,5)] [(2,1) (3,1)] [(1,3) (2,3)] [(4,5) (5,5)]  Perform action [Move car 0 forward ] to get state below with path cost 1 and heuristic 1
+[(3,3) (3,4)]* [(1,1) (1,2)] [(1,4) (1,5)] [(2,1) (3,1)] [(1,3) (2,3)] [(4,5) (5,5)]  Perform action [Move car 0 forward ] to get state below with path cost 2 and heuristic 0
+[(3,4) (3,5)]* [(1,1) (1,2)] [(1,4) (1,5)] [(2,1) (3,1)] [(1,3) (2,3)] [(4,5) (5,5)]Expanded 2 states 
+
+Problem 2 with heuristic 2:
+What is the size of your grid? 5
+Give me cars, yours first, end car with 0 0, end all cars with -1 -1 
+3 2 3 3 0 0
+1 1 1 2 0 0
+1 4 1 5 0 0
+2 1 3 1 0 0
+1 3 2 3 0 0
+4 5 5 5 0 0
+-1 -1
+What is your goal? 3 5
+What kind of search do you want to do? astar
+Tree or graph? graph 
+Which heuristic will you use? 2
+Found solution:  
+Initial state: 
+[(3,2) (3,3)]* [(1,1) (1,2)] [(1,4) (1,5)] [(2,1) (3,1)] [(1,3) (2,3)] [(4,5) (5,5)]  Perform action [Move car 0 forward ] to get state below with path cost 1 and heuristic 1
+[(3,3) (3,4)]* [(1,1) (1,2)] [(1,4) (1,5)] [(2,1) (3,1)] [(1,3) (2,3)] [(4,5) (5,5)]  Perform action [Move car 0 forward ] to get state below with path cost 2 and heuristic 0
+[(3,4) (3,5)]* [(1,1) (1,2)] [(1,4) (1,5)] [(2,1) (3,1)] [(1,3) (2,3)] [(4,5) (5,5)]Expanded 2 states 
